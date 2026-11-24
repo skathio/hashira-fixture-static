@@ -18,12 +18,12 @@ permissions: {}
 
 jobs:
   ci:
-    uses: skathio/hashira/.github/workflows/static-webapp-ci.yml@v3
+    uses: skathio/hashira/.github/workflows/static-webapp-ci.yml@e3b3c1735530bba2609d3dbe153c662638432a19
     permissions:
       contents: read # check out the repository
       id-token: write # upload-pages-artifact authenticates to Pages
       pages: write # upload-pages-artifact stores the site for deploy
-      pull-requests: write # coverage comment on the pull request
+      pull-requests: write # CI summary comment on the pull request
       security-events: write # upload CodeQL results when CodeQL is enabled
   deploy:
     needs: ci
@@ -34,7 +34,7 @@ jobs:
       id-token: write # deploy-pages authenticates to Pages with OIDC
       pages: write # deploy-pages publishes the site
     steps:
-      - uses: skathio/hashira/.github/actions/pages-deploy@v3
+      - uses: skathio/hashira/.github/actions/pages-deploy@e3b3c1735530bba2609d3dbe153c662638432a19
         id: deploy
       - name: Check the live site serves this run's hashira commit
         shell: bash
